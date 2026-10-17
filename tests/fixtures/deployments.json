@@ -1,0 +1,4 @@
+{"items":[
+  {"metadata":{"name":"web","namespace":"default","creationTimestamp":"2026-10-01T00:00:00Z"},
+   "spec":{"replicas":2},"status":{"readyReplicas":1,"unavailableReplicas":1}}
+]}

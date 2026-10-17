@@ -1,0 +1,12 @@
+[
+  {
+    "ip": "203.0.113.10",
+    "region": { "slug": "nyc1" },
+    "droplet": { "id": 101, "name": "web" }
+  },
+  {
+    "ip": "203.0.113.11",
+    "region": { "slug": "nyc1" },
+    "droplet": null
+  }
+]

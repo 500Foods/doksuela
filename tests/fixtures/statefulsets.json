@@ -1,0 +1,4 @@
+{"items":[
+  {"metadata":{"name":"db","namespace":"data","creationTimestamp":"2026-09-01T00:00:00Z"},
+   "spec":{"replicas":1},"status":{"readyReplicas":1}}
+]}

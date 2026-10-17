@@ -1,0 +1,18 @@
+[
+  {
+    "id": 101,
+    "name": "web",
+    "status": "active",
+    "region": { "slug": "nyc1" },
+    "size": { "slug": "s-1vcpu-1gb" },
+    "networks": { "v4": [{ "ip_address": "203.0.113.10", "type": "public" }] }
+  },
+  {
+    "id": 102,
+    "name": "batch",
+    "status": "off",
+    "region": { "slug": "nyc1" },
+    "size": { "slug": "s-1vcpu-1gb" },
+    "networks": { "v4": [] }
+  }
+]

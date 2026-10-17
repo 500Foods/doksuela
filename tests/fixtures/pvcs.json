@@ -1,0 +1,8 @@
+{"items":[
+  {"metadata":{"name":"data","namespace":"default"},
+   "spec":{"resources":{"requests":{"storage":"10Gi"}}},
+   "status":{"phase":"Bound","capacity":{"storage":"10Gi"}}},
+  {"metadata":{"name":"scratch","namespace":"default"},
+   "spec":{"resources":{"requests":{"storage":"1Gi"}}},
+   "status":{"phase":"Pending"}}
+]}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "proj-1",
+    "name": "first",
+    "purpose": "Web",
+    "environment": "Production",
+    "is_default": true
+  },
+  {
+    "id": "proj-2",
+    "name": "labs",
+    "purpose": "Testing",
+    "environment": "Development",
+    "is_default": false
+  }
+]

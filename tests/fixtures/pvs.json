@@ -1,0 +1,5 @@
+{"items":[
+  {"metadata":{"name":"pv-data"},
+   "spec":{"claimRef":{"namespace":"default","name":"data"},
+           "csi":{"driver":"dobs.csi.digitalocean.com","volumeHandle":"vol-1"}}}
+]}

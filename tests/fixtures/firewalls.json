@@ -1,0 +1,20 @@
+[
+  {
+    "id": "fw-1",
+    "name": "web",
+    "status": "succeeded",
+    "droplet_ids": [101],
+    "tags": ["web"],
+    "inbound_rules": [{}],
+    "outbound_rules": [{}]
+  },
+  {
+    "id": "fw-2",
+    "name": "empty",
+    "status": "succeeded",
+    "droplet_ids": [],
+    "tags": [],
+    "inbound_rules": [],
+    "outbound_rules": []
+  }
+]

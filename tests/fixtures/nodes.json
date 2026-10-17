@@ -1,0 +1,6 @@
+{"items":[
+  {"metadata":{"name":"app-aaaa","labels":{"doks.digitalocean.com/node-pool":"app","doks.digitalocean.com/node-pool-id":"pool-1"}},
+   "status":{"conditions":[{"type":"Ready","status":"True"}],"addresses":[{"type":"InternalIP","address":"10.0.0.8"},{"type":"ExternalIP","address":"203.0.113.21"}],"nodeInfo":{"kubeletVersion":"v1.32.2"},"allocatable":{"cpu":"2","memory":"4Gi"}}},
+  {"metadata":{"name":"stray-node","labels":{}},
+   "status":{"conditions":[{"type":"Ready","status":"False"}],"addresses":[{"type":"InternalIP","address":"10.0.0.9"}],"nodeInfo":{"kubeletVersion":"v1.32.2"},"allocatable":{"cpu":"2","memory":"4Gi"}}}
+]}

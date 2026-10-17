@@ -1,0 +1,15 @@
+[
+  {
+    "id": "pool-1",
+    "name": "app",
+    "size": "s-2vcpu-4gb",
+    "count": 2,
+    "auto_scale": true,
+    "min_nodes": 2,
+    "max_nodes": 5,
+    "nodes": [
+      {"id": "n1", "name": "app-aaaa", "status": {"state": "running"}, "droplet_id": "111"},
+      {"id": "n2", "name": "app-bbbb", "status": {"state": "running"}, "droplet_id": "222"}
+    ]
+  }
+]

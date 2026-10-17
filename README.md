@@ -1,17 +1,28 @@
 # doksuela
 
-This repository contains a tool for exploring or managing a DOKS cluster, essentially a front-end to tools like kubectl, doctl, clusterlint, and so on.
+This repository contains a tool for exploring or managing a DOKS cluster, essentially a front-end to kubectl, doctl, and clusterlint.
 
-Why? Well, if you don't live and breath kubectl daily, it can sometimes be a bit onerous to find what you're looking for. Moreso for doctl. At the same time, there's a lot of data in there that is obscured away and likely forgotten if you're not actively looking for it.
+Why? Well, if you don't live and breathe kubectl daily, it can sometimes be a bit onerous to find what you're looking for. Moreso for doctl. At the same time, there's a lot of data in there that is obscured away and likely forgotten if you're not actively looking for it.
 
-Sure, there are a handful of web interfaces, but all are lacking in some respect. The Digital Ocean web UI is qutie nice, but doesn't give you much depth, being naturally focused on managing DigitalOcean's products and services, resources, that kind of thing. 
+Sure, there are a handful of web interfaces, but all are lacking in some respect. The DigitalOcean web UI is quite nice, but doesn't give you much depth, being naturally focused on managing DigitalOcean's products and services, resources, that kind of thing. 
 Various Kubernetes cluster management tools don't know anything in particular about DigitalOcean or DOKS, which is a problem when you're looking at something that spans both realms.
+
+## Running
+
+doksuela needs Lua 5.5, the [terminal.lua](https://github.com/lunarmodules/terminal.lua) library, and `doctl`, `kubectl`, and `clusterlint` on `PATH`. JSON decoding uses the vendored `dkjson`.
+
+```sh
+luarocks --lua-version 5.5 install terminal
+lua doksuela.lua
+```
+
+The last cluster is remembered, and check results are cached under `~/.cache/doksuela/`, so the next launch draws immediately. Counts stay blue until a check started in this session returns, then turn green. `--cache DIR` uses another cache directory. `--fixture DIR` reads JSON fixtures and does not run the CLIs, which is how the UI is exercised without a cluster. `lua doksuela.lua --help` prints the flags.
 
 ## Additional Notes
 While this project is currently under active development, feel free to give it a try and post any issues you encounter.  Or start a discussion if you would like to help steer the project in a particular direction.  Early days yet, so a good time to have your voice heard.  As the project unfolds, additional resources will be made available, including platform binaries, more documentation, demos, and so on.
 
 ## Repository Information 
-[![Count Lines of Code](https://github.com/500Foods/Template/actions/workflows/main.yml/badge.svg)](https://github.com/500Foods/doksuela/actions/workflows/main.yml)
+[![Count Lines of Code](https://github.com/500Foods/doksuela/actions/workflows/main.yml/badge.svg)](https://github.com/500Foods/doksuela/actions/workflows/main.yml)
 <!--CLOC-START -->
 ```cloc
 Last updated at 2026-08-25 19:40:23 UTC

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "snap-1",
+    "name": "web-snap",
+    "resource_type": "droplet",
+    "regions": ["nyc1"],
+    "size_gigabytes": 2
+  },
+  {
+    "id": "snap-2",
+    "name": "vol-snap",
+    "resource_type": "volume",
+    "regions": ["nyc1"],
+    "size_gigabytes": 1
+  }
+]

@@ -1,0 +1,4 @@
+{"Diagnostics":[
+  {"Check":"bare-pods","Severity":"warning","Message":"bare pod","Kind":"pod","Object":{"name":"lonely","namespace":"default"}},
+  {"Check":"resource-requirements","Severity":"error","Message":"missing requests","Kind":"pod","Object":{"name":"lonely","namespace":"default"}}
+]}

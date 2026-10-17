@@ -1,0 +1,10 @@
+{"items":[
+  {"metadata":{"name":"web","namespace":"default","annotations":{"service.beta.kubernetes.io/do-loadbalancer-id":"lb-1"}},
+   "spec":{"type":"LoadBalancer","clusterIP":"10.245.0.10"},
+   "status":{"loadBalancer":{"ingress":[{"ip":"203.0.113.10"}]}}},
+  {"metadata":{"name":"pending","namespace":"default"},
+   "spec":{"type":"LoadBalancer","clusterIP":"10.245.0.11"},
+   "status":{"loadBalancer":{"ingress":[]}}},
+  {"metadata":{"name":"alias","namespace":"default"},
+   "spec":{"type":"ExternalName","externalName":"other.example.com"}}
+]}

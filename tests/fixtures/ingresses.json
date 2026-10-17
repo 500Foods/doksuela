@@ -1,0 +1,5 @@
+{"items":[
+  {"metadata":{"name":"web","namespace":"default"},
+   "spec":{"rules":[{"host":"app.example.com"},{"host":"gone.example.com"}],
+           "tls":[{"hosts":["app.example.com"]}]}}
+]}

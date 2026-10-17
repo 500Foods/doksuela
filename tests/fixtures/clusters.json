@@ -1,0 +1,28 @@
+[
+  {
+    "id": "bd5f5959-5e1e-4205-a714-a914373942af",
+    "name": "prod",
+    "region": "nyc1",
+    "version": "1.32.2-do.0",
+    "ha": true,
+    "endpoint": "https://bd5f5959-5e1e-4205-a714-a914373942af.k8s.ondigitalocean.com",
+    "status": {"state": "running"},
+    "node_pools": [{"name": "app"}],
+    "auto_upgrade": true,
+    "surge_upgrade": true,
+    "maintenance_policy": {"day": "sunday", "start_time": "04:00"},
+    "registry_enabled": true,
+    "vpc_uuid": "vpc-1",
+    "ipv4": "203.0.113.4"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111111",
+    "name": "dev",
+    "region": "sfo3",
+    "version": "1.31.1-do.0",
+    "ha": false,
+    "endpoint": "https://dev.example.invalid",
+    "status": {"state": "running"},
+    "node_pools": []
+  }
+]

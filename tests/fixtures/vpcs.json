@@ -1,0 +1,16 @@
+[
+  {
+    "id": "vpc-1",
+    "name": "default-nyc1",
+    "region": "nyc1",
+    "ip_range": "10.10.0.0/16",
+    "default": true
+  },
+  {
+    "id": "vpc-2",
+    "name": "extra",
+    "region": "sfo3",
+    "ip_range": "10.20.0.0/16",
+    "default": false
+  }
+]
