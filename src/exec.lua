@@ -69,11 +69,12 @@ function M.start(argv, item)
   os.remove(job.code_path)
 
   local inner = M.display(argv)
-    .. " > " .. M.quote(job.stdout_path)
+    .. " < /dev/null > " .. M.quote(job.stdout_path)
     .. " 2> " .. M.quote(job.stderr_path)
     .. "; echo $? > " .. M.quote(job.code_path)
-  -- setsid so the child keeps running after popen returns and does not see our tty.
-  local launcher = "setsid sh -c " .. M.quote(inner) .. " >/dev/null 2>&1 & echo $!"
+  -- setsid so the child keeps running after popen returns. stdin is /dev/null
+  -- so a parallel doctl or kubectl cannot eat the TUI's keystrokes.
+  local launcher = "setsid sh -c " .. M.quote(inner) .. " </dev/null >/dev/null 2>&1 & echo $!"
   local pipe = assert(io.popen(launcher, "r"))
   local pid = pipe:read("*l")
   pipe:close()

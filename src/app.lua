@@ -37,7 +37,12 @@ local BORDER_TITLE = " " .. TITLE .. " " .. VERSION_LABEL .. " "
 local M = {}
 
 local function swidth(text)
-  return width.utf8swidth(tostring(text))
+  text = tostring(text)
+  local ok, n = pcall(width.utf8swidth, text)
+  if ok then
+    return n
+  end
+  return width.utf8swidth(textfit.sanitize(text))
 end
 
 local function set_mouse(enabled)

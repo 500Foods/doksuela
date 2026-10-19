@@ -689,6 +689,86 @@ do
   eq(session.raw._account.stderrfail.error, "real problem", "stderr wins over stdout")
 end
 
+do
+  local textfit = require("doksuela.textfit")
+  local width = require("terminal.text.width")
+  local function sw(s)
+    return width.utf8swidth(s)
+  end
+  local joined = "Init doctl kubernetes cluster list --output json --interactive=false"
+    .. "  ·  Init kubectl get pods -A -o json --context do-tor1-cluster-canada-001"
+  for _, amb in ipairs({ 1, 2 }) do
+    width.set_ambiguous_width(amb)
+    local once = textfit.fit(joined, 40, sw)
+    local twice = textfit.fit(once, 40, sw)
+    local valid = pcall(function()
+      for _ in utf8.codes(twice) do end
+    end)
+    truthy(valid, "clipped parallel footer stays valid UTF-8 at ambiguous width " .. amb)
+    truthy(sw(twice) <= 40, "clipped parallel footer fits at ambiguous width " .. amb)
+    local dash = textfit.fit("abcd—efghijkl", 6, sw)
+    truthy(pcall(sw, dash) and sw(dash) <= 6, "an em dash clips on a character boundary")
+  end
+  width.set_ambiguous_width(1)
+  local bad = textfit.fit("ok\255tail and more text", 8, sw)
+  truthy(pcall(function()
+    for _ in utf8.codes(bad) do end
+  end), "invalid bytes are stripped before clipping")
+  truthy(sw(bad) <= 8, "sanitized text still fits")
+end
+
+do
+  local dir = "/tmp/doksuela-tty-test"
+  os.execute("rm -rf " .. dir)
+  local session = Session.new({ cache_root = dir, max = 4 })
+  session:enqueue("_account", {
+    id = "tty",
+    argv = { "sh", "-c", "if test -t 0; then printf tty; else printf notty; fi" },
+    parse = "text",
+  })
+  local spins = 0
+  while not session:idle() do
+    session:tick()
+    spins = spins + 1
+    if spins > 100 then
+      break
+    end
+    if not session:idle() then
+      os.execute("sleep 0.02")
+    end
+  end
+  eq(session.raw._account.tty and session.raw._account.tty.data, "notty", "background commands do not inherit the tty")
+end
+
+do
+  local dir = "/tmp/doksuela-stale-test"
+  os.execute("rm -rf " .. dir)
+  local session = Session.new({ cache_root = dir, max = 4 })
+  session:enqueue("_account", {
+    id = "race",
+    argv = { "sh", "-c", "sleep 0.25; printf slow" },
+    parse = "text",
+  })
+  session:enqueue("_account", {
+    id = "race",
+    argv = { "sh", "-c", "printf fast" },
+    parse = "text",
+  }, true)
+  local spins = 0
+  while not session:idle() do
+    session:tick()
+    spins = spins + 1
+    if spins > 80 then
+      break
+    end
+    if not session:idle() then
+      os.execute("sleep 0.02")
+    end
+  end
+  eq(session.raw._account.race and session.raw._account.race.data, "fast", "an older parallel run does not overwrite the newer result")
+  truthy(session:idle(), "the parallel race drained")
+end
+
 if failures > 0 then
   io.stderr:write(failures, " failed, ", checks_run, " checks\n")
   os.exit(1)

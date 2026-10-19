@@ -137,6 +137,7 @@ function Session.new(opts)
     note = nil,
     job_seq = 0,
     wave_done = 0,
+    latest_seq = {},
     reason = "Init",
   }, Session)
   self.remembered_id = state.cluster_id
@@ -268,7 +269,9 @@ function Session:enqueue(cluster_id, spec, again, reason)
     priority = spec.priority or 10,
     workdir = self:_workdir(),
     reason = reason or self.reason or "Init",
+    seq = self.job_seq,
   }
+  self.latest_seq[spec.id] = item.seq
   if self.fixture then
     local body, err = checks.read_fixture(self.fixture, spec.argv)
     item.fixture = true
@@ -754,6 +757,10 @@ function Session:_finish(job)
     argv = job.argv,
     stderr = logged,
   })
+  -- A newer run of this check is already in flight. Keep its result.
+  if item.seq and (self.latest_seq[item.id] or 0) > item.seq then
+    return
+  end
   if item.parse == "text" then
     local ok = not failed
     self:_store(item.cluster_id, item.id, ok, job.stdout, ok and nil or err_text)
