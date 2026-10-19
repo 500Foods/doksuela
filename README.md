@@ -25,17 +25,17 @@ While this project is currently under active development, feel free to give it a
 [![Count Lines of Code](https://github.com/500Foods/doksuela/actions/workflows/main.yml/badge.svg)](https://github.com/500Foods/doksuela/actions/workflows/main.yml)
 <!--CLOC-START -->
 ```cloc
-Last updated at 2026-10-17 00:39:48 UTC
+Last updated at 2026-10-19 17:04:47 UTC
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Lua                             23            446            120           6262
+Lua                             23            454            125           6412
 JSON                            28              0              0            235
-Markdown                         3             91              2            191
+Markdown                         3             91              2            195
 YAML                             2              8             13             37
 Text                             1              0              0              1
 -------------------------------------------------------------------------------
-SUM:                            57            545            135           6726
+SUM:                            57            553            140           6880
 -------------------------------------------------------------------------------
 3 Files were skipped (duplicate, binary, or without source code):
   gitattributes: 1
